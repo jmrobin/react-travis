@@ -8,3 +8,15 @@ before_install:
 
 script:
   - docker run jmrhub/react-travis npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "grider-react"
+  env: "GriderReact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-236959176402"
+  bucket_path: "grider-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
