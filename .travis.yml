@@ -1,0 +1,10 @@
+# .travis.yml
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jmrhub/react-travis -f dev.Dockerfile .
+
+script:
+  - docker run jmrhub/react-travis npm run test -- --coverage
